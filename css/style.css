@@ -180,11 +180,10 @@ body {
 .col1{
     position: relative;
     background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
-    padding: 220px 0px;
+    padding: 145px 0px;
     /* background-image: url(../webImages/background-image.png);  */
     background-repeat: no-repeat;
     background-size: cover;
-    padding-bottom: 100px;
 }
 
 .col1_main {
@@ -255,7 +254,7 @@ body {
 .col2 {
     position: relative;
     width: 100%;
-    padding: 100px 0px;
+    padding: 200px 0px;
     background-image: linear-gradient(90deg, rgb(4, 17, 70) 0%, rgb(255, 0, 78) 70%, rgb(255, 72, 0) 100%);
 }
 
@@ -435,4 +434,12 @@ body {
 .swiper-button-prev:after,
 .swiper-button-next:after{
     font-size: 16px;
+}
+
+button.docSlider-button {
+    background: #fff;
+}
+
+.docSlider-pager {
+    right: 30px;
 }

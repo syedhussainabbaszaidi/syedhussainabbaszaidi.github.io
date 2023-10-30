@@ -31,7 +31,7 @@ var swiper = new Swiper(".mySwiperPortfolio", {
 });
 
 
-gsap.from('.first',{duration: 1.5 , delay: 0.3, y:'-100%',opacity: 1})
+// gsap.from('.first',{duration: 1.5 , delay: 0.3, y:'-100%',opacity: 1})
 gsap.from('.main_container', {duration: 2, delay: 1.8,opacity: 0})
 gsap.from('.header_logo>h2', {duration: 2.5,opacity: 0, delay: 2.9, y: '100%'})
 gsap.from('.header_nav', {duration: 2.9,opacity: 0, delay: 2.9, y: '-100%'})
