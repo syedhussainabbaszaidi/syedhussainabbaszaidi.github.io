@@ -33,6 +33,10 @@ var swiper = new Swiper(".mySwiperPortfolio", {
       slidesPerView: 1,
       centeredSlides: false,
     },
+    421: {
+      slidesPerView: 2,
+      centeredSlides: true,
+    },
   },
 });
 
