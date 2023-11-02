@@ -28,6 +28,12 @@ var swiper = new Swiper(".mySwiperPortfolio", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      centeredSlides: false,
+    },
+  },
 });
 
 

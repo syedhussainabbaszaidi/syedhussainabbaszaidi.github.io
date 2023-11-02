@@ -17,8 +17,8 @@
 }
 
 .header_nav ul li:last-child a {
-    font-size: 18px;
-    padding: 9px 30px;
+    font-size: 14px;
+    padding: 5px 15px;
 }
 
 .header_nav ul li a {
@@ -27,7 +27,7 @@
 }
 
 .col1 {
-    padding: 120px 0px;
+    padding: 60px 0px;
 }
 
 .col1_left {
@@ -53,6 +53,12 @@
 
 .col1_btn {
     margin: 0 auto;
+    width: 160px;
+}
+
+.col1_btn a{
+    font-size: 14px;
+    padding: 8px 0px;
 }
 
 .col2 h2,
@@ -94,8 +100,17 @@
     font-size: 22px;
 }
 
+.swiper-button-next, .swiper-button-prev {
+    top: 320px;
+}
+
 .col3_box a {
-    height: 300px;
+    height: 350px;
+}
+
+.col3_box img {
+    height: 350px;
+    object-fit: cover;
 }
 
 .col3_btn {
@@ -104,10 +119,14 @@
 }
 
 .col2 {
-    padding: 30px 0px;
+    padding: 150px 0px;
 }
 
 .col2_box {
     padding: 10px;
     width: 100%;
+}
+
+.col2_box:before{
+    display: none;
 }
