@@ -1,12 +1,12 @@
 .standard{
     width: 100%;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .header_main {
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .header_nav ul {
@@ -17,8 +17,9 @@
 }
 
 .header_nav ul li:last-child a {
-    font-size: 18px;
-    padding: 9px 30px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 7px 14px;
 }
 
 .header_nav ul li a {
