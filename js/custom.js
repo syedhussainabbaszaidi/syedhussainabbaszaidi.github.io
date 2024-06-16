@@ -46,3 +46,10 @@ gsap.from('.main_container', {duration: 2, delay: 1.8,opacity: 0})
 gsap.from('.header_logo>h2', {duration: 2.5,opacity: 0, delay: 2.9, y: '100%'})
 gsap.from('.header_nav', {duration: 2.9,opacity: 0, delay: 2.9, y: '-100%'})
 gsap.from('.col1_left', {x:0,duration: 2.9,opacity: 0, delay: -1.5})
+
+$(document).ready(function() {
+  $('.col3_box').each(function(index) {
+    let indexAdd = index + 1;
+    $(this).find('.col3_inner_box > h4').text(indexAdd);
+  });
+});

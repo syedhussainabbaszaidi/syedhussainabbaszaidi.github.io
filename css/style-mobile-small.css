@@ -110,7 +110,7 @@
 
 .col3_box img {
     height: 350px;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .col3_btn {
