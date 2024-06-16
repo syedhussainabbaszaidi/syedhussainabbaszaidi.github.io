@@ -75,7 +75,8 @@ body {
 
 .first{
     position: absolute;
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
     top: 0;
     width: 100%;
     height: 100vh;
@@ -109,7 +110,8 @@ body {
 .header {
     position: relative;
     /* background: var(--black); */
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
 }
 
 .header_main {
@@ -153,7 +155,8 @@ body {
 }
 
 .header_nav ul li:last-child a{
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
     color: var(--white);
     border: 2px solid var(--white);
     padding: 5px 20px;
@@ -179,7 +182,8 @@ body {
 
 .col1{
     position: relative;
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
     padding: 145px 0px;
     /* background-image: url(../webImages/background-image.png);  */
     background-repeat: no-repeat;
@@ -234,7 +238,8 @@ body {
 .col1_btn a {
     position: relative;
     display: block;
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
     text-align: center;
     color: var(--white);
     font-size: 18px;
@@ -304,7 +309,8 @@ body {
 .col3{
     position: relative;
     width: 100%;
-    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%);
+    <!-- background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); -->
+	background-color: #ff4800;
     padding: 50px 0px
 }
 
