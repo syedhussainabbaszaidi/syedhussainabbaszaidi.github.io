@@ -248,8 +248,8 @@ body {
 .col1_btn a {
     position: relative;
     display: block;
-    /* background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); */
-	/* background-color: #40AF3A; */
+    background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); 
+    background-color: #40AF3A;
     text-align: center;
     color: var(--white);
     font-size: 18px;
@@ -265,38 +265,39 @@ body {
 } */
 
 .col1_btn a{
-width: 100%;
-display: inline-flex;
-align-items: center;
-border-radius: 50px;
-background: linear-gradient(90deg, rgb(116 187 43) 0%, #7dbf3845 99.93%);
-justify-content: space-around;
-padding: 10px 0px;
-position: relative;
-overflow: hidden;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 50px;
+    background: linear-gradient(90deg, rgb(116 187 43) 0%, #7dbf3845 99.93%);
+    justify-content: space-around;
+    padding: 10px 0px;
+    position: relative;
+    overflow: hidden;
 }
+
 .col1_btn a:before {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-z-index: -1;
-border-radius: inherit;
-background: linear-gradient(90deg, #fff, transparent, #fff);
-background-size: 200% 100%;
-animation: moveBorder 24s infinite linear;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #fff, transparent, #fff);
+    background-size: 200% 100%;
+    animation: moveBorder 24s infinite linear;
 }
 
 @keyframes moveBorder {
-0% {
-    background-position: 0% 0%;
-}
+    0% {
+        background-position: 0% 0%;
+    }
 
-100% {
-    background-position: 1010% 0%;
-}
+    100% {
+        background-position: 1010% 0%;
+    }
 }
 
 /* col2 start style */
