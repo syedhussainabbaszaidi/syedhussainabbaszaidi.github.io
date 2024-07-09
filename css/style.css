@@ -240,17 +240,17 @@ body {
     width: 50%;
 }
 
-/* .col1_btn {
+.col1_btn {
     position: relative;
     width: 200px;
 }
-
+/*
 .col1_btn a {
     position: relative;
     display: block;
     background-image: linear-gradient(90deg, #041146 0%, #ff004e 70% , #ff4800 100%); 
     background-color: #40AF3A;
-    text-align: center;
+    text-align: center;`
     color: var(--white);
     font-size: 18px;
     padding: 10px 0px;
@@ -274,6 +274,7 @@ body {
     padding: 10px 0px;
     position: relative;
     overflow: hidden;
+    color: #fff;
 }
 
 .col1_btn a:before {
