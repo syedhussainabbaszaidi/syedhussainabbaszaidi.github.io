@@ -495,3 +495,15 @@ button.docSlider-button {
 .docSlider-pager {
     right: 30px;
 }
+
+  /* ---- particles.js container ---- */
+  
+  #particles-js {
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+  }
+  
