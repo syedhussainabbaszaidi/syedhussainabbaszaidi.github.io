@@ -150,6 +150,7 @@ body {
 
 .header_nav {
     position: relative;
+	z-index: 999;	
 }
 
 .header_nav ul {
@@ -211,6 +212,7 @@ body {
 .col1_left {
     position: relative;
     width: 50%;
+    z-index: 99;
 }
 
 .col1_left h2 {
