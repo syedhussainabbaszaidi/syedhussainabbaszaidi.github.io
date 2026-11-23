@@ -16,7 +16,7 @@ const heroItems=gsap.utils.toArray('.case-hero h1,.case-hero p,.resume-premium-h
 if(heroItems.length)gsap.fromTo(heroItems,{autoAlpha:0,y:32},{autoAlpha:1,y:0,duration:.8,stagger:.1,ease:'power3.out',clearProps:'transform'});
 const reveal=(selector,trigger)=>{const items=gsap.utils.toArray(selector);items.forEach((el,i)=>gsap.fromTo(el,{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.65,delay:(i%3)*.05,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:trigger||el,start:'top 88%',once:true}}));};
 reveal('.resume-highlight-grid>div','.resume-highlights');
-reveal('.premium-resume-block','.resume-content');
+reveal('.premium-resume-block');
 reveal('.resume-skill-groups article,.education-list article,.resume-contact-grid a');
 reveal('.resume-cta-inner>*','.resume-cta');
 reveal('.case-img');
