@@ -158,3 +158,12 @@ html,body{min-height:100%}body{min-height:100vh;display:flex;flex-direction:colu
 .resume-cta-inner{align-items:flex-start;flex-direction:column;gap:25px}
 .resume-cta h2{font-size:clamp(42px,10vw,58px)}
 }
+
+/* Local UI arrows and consistent floating contact CTA */
+.ui-arrow{width:17px;height:17px;display:inline-block;flex:0 0 17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;overflow:visible}
+.load-more-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;line-height:1.2;white-space:nowrap}
+.load-more-btn .ui-arrow{width:18px;height:18px;flex-basis:18px;transition:transform .2s ease}
+.load-more-btn:hover .ui-arrow{transform:translateY(3px)}
+.more{display:inline-flex;align-items:center;gap:8px}.more .ui-arrow{transition:transform .2s ease}.more:hover .ui-arrow{transform:translate(2px,-2px)}
+.whatsapp-float{display:flex!important;visibility:visible!important;opacity:1;pointer-events:auto}
+.whatsapp-float .contact-float-arrow{display:grid;place-items:center}.whatsapp-float .contact-float-arrow .ui-arrow{width:17px;height:17px}
