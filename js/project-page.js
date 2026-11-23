@@ -22,7 +22,7 @@ reveal('.resume-cta-inner>*','.resume-cta');
 reveal('.case-img');
 reveal('.contact-method-card,.contact-detail-row,.contact-note-card');
 reveal('.footer-service-links>div','.footer-service-links');
-gsap.fromTo('.whatsapp-float',{scale:0,autoAlpha:0},{scale:1,autoAlpha:1,duration:.5,delay:.8,ease:'back.out(1.7)'});
+
 ScrollTrigger.refresh();
 }
 document.querySelectorAll('a[target="_blank"]').forEach(a=>a.rel='noopener noreferrer');
