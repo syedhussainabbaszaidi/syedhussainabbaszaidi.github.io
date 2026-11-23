@@ -1,4 +1,4 @@
-/* Typography is self-hosted in /assets/css/local-fonts.css */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 
 :root{--ink:#07130f;--ink-2:#0d2119;--panel:#10291f;--paper:#f3f4ec;--muted:#a9b9ae;--accent:#b9f36b;--line:rgba(236,245,235,.13);--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif}
