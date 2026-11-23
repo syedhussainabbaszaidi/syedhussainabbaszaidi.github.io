@@ -1,3 +1,4 @@
+if(document.head&&!document.querySelector('link[rel~="icon"]')){const portfolioFavicon=document.createElement('link');portfolioFavicon.rel='icon';portfolioFavicon.type='image/svg+xml';portfolioFavicon.href='/favicon.svg';document.head.appendChild(portfolioFavicon)}
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 7,
     autoplay: {
