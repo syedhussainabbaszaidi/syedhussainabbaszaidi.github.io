@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://syedhussainabbaszaidi.github.io/sitemap.xml
