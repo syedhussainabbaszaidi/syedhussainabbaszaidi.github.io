@@ -1,3 +1,50 @@
-(()=>{const P=window.portfolioProjects||[],q=s=>document.querySelector(s),phone='923148069163',message='Hello Hussain, I would like to discuss a website development project.',wa='https://wa.me/'+phone+'?text='+encodeURIComponent(message);
-function chrome(){const h=q('.header');if(h){h.innerHTML='<div class="wrap nav"><a class="logo" href="/" aria-label="Home">H</a><nav class="links" aria-label="Main navigation"><a href="/#about">About</a><a href="/projects/">Projects</a><a href="/#expertise">Expertise</a><a href="/resume/">Resume</a><a class="pill" href="'+wa+'" target="_blank" rel="noopener">Let’s talk ↗</a></nav><button class="toggle" id="globalToggle" aria-label="Open navigation" aria-expanded="false">☰</button></div>';h.insertAdjacentHTML('afterend','<aside class="global-drawer" id="globalDrawer" aria-hidden="true"><div class="drawer-top"><a class="logo" href="/">H</a><button type="button" id="globalClose" aria-label="Close navigation">×</button></div><nav class="drawer-nav"><a href="/#about">About</a><a href="/projects/">Projects</a><a href="/#expertise">Expertise</a><a href="/resume/">Resume</a><a href="/#contact">Contact</a><a href="'+wa+'" target="_blank" rel="noopener">WhatsApp ↗</a></nav></aside>');}const f=q('.footer');if(f)f.innerHTML='<div class="wrap footer-row"><span>© '+new Date().getFullYear()+' Syed Hussain Abbas Zaidi</span><span>Shopify Expert · CMS & Web Developer</span><a href="/">Home ↑</a></div>';if(!q('.whatsapp-float'))document.body.insertAdjacentHTML('beforeend','<a class="whatsapp-float" href="'+wa+'" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6a10.5 10.5 0 0 1-5.3-1.4l-.4-.2-3.9 1 1-3.8-.3-.4A10.5 10.5 0 1 1 16 26.6zm5.8-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2l-1 1.1c-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.1.2 2.2 3.3 5.3 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg></a>';const t=q('#globalToggle'),d=q('#globalDrawer'),c=q('#globalClose');if(t&&d){const open=()=>{d.classList.add('is-open');d.setAttribute('aria-hidden','false');t.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches)gsap.to(d,{yPercent:0,duration:.45,ease:'power3.out'});else d.style.transform='translateY(0)'};const close=()=>{document.body.style.overflow='';t.setAttribute('aria-expanded','false');if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches)gsap.to(d,{yPercent:-105,duration:.35,onComplete:()=>{d.classList.remove('is-open');d.setAttribute('aria-hidden','true')}});else{d.style.transform='translateY(-105%)';d.classList.remove('is-open');d.setAttribute('aria-hidden','true')}};t.onclick=open;c?.addEventListener('click',close);d.addEventListener('click',e=>{if(e.target===d)close()})}}
-chrome();const p=P.find(x=>x.slug===document.body.dataset.project);if(!p)return;document.title=p.name+' | Project Case Study | Syed Hussain Abbas Zaidi';const set=(s,v)=>{const e=q(s);if(e)e.textContent=v};set('#caseName',p.name);set('#caseTech',p.tech);set('#caseUrl',p.url);const im=q('#caseImage');if(im){im.src='/'+p.image;im.alt=p.name+' original portfolio preview';im.loading='eager';im.decoding='async'}const live=q('#liveLink');if(live){live.href=p.url;live.target='_blank';live.rel='noopener noreferrer'}const m=q('meta[name=description]');if(m)m.content=p.name+' project listed in the portfolio of Syed Hussain Abbas Zaidi. Original platform label: '+p.tech+'.';if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){gsap.registerPlugin(ScrollTrigger);gsap.from('.case-hero h1,.case-hero p',{y:30,opacity:0,duration:.75,stagger:.1});gsap.from('#caseImage',{clipPath:'inset(0 0 100% 0)',duration:1,scrollTrigger:{trigger:'#caseImage',start:'top 85%'}});gsap.from('.whatsapp-float',{scale:0,opacity:0,duration:.55,delay:.8,ease:'back.out(1.7)'})}document.querySelectorAll('a[target=_blank]').forEach(a=>a.rel='noopener noreferrer')})();
+(()=> {
+ const projects=window.portfolioProjects||[];
+ const $=s=>document.querySelector(s);
+ const phone='923148069163';
+ const message=encodeURIComponent('Hello Hussain, I would like to discuss a website development project.');
+ const whatsapp='https://wa.me/'+phone+'?text='+message;
+ const header=$('.header');
+ if(header){
+  header.innerHTML='<div class="wrap nav"><a class="logo" href="/" aria-label="Home">H</a><nav class="links" aria-label="Main navigation"><a href="/#about">About</a><a href="/projects/">Projects</a><a href="/#expertise">Expertise</a><a href="/resume/">Resume</a><a class="pill" href="'+whatsapp+'" target="_blank" rel="noopener">Let’s talk ↗</a></nav><button class="toggle" id="globalToggle" aria-label="Open navigation" aria-expanded="false">☰</button></div>';
+  header.insertAdjacentHTML('afterend','<aside class="global-drawer" id="globalDrawer" aria-hidden="true"><div class="drawer-top"><a class="logo" href="/">H</a><button type="button" id="globalClose" aria-label="Close navigation">×</button></div><nav class="drawer-nav"><a href="/#about">About</a><a href="/projects/">Projects</a><a href="/#expertise">Expertise</a><a href="/resume/">Resume</a><a href="/#contact">Contact</a><a href="'+whatsapp+'" target="_blank" rel="noopener">WhatsApp ↗</a></nav></aside>');
+ }
+ const footer=$('.footer');
+ if(footer) footer.innerHTML='<div class="wrap footer-row"><span>© '+new Date().getFullYear()+' Syed Hussain Abbas Zaidi</span><span>Shopify Expert · CMS & Web Developer</span><a href="/">Home ↑</a></div>';
+ if(!$('.whatsapp-float')){
+  document.body.insertAdjacentHTML('beforeend','<a class="whatsapp-float" href="'+whatsapp+'" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp"><span aria-hidden="true" style="font-size:27px;font-weight:700">◉</span></a>');
+ }
+ const toggle=$('#globalToggle'),drawer=$('#globalDrawer'),closeButton=$('#globalClose');
+ if(toggle&&drawer){
+  toggle.addEventListener('click',()=>{
+   drawer.classList.add('is-open');drawer.setAttribute('aria-hidden','false');toggle.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';
+   if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches) gsap.to(drawer,{yPercent:0,duration:.4,ease:'power3.out'});
+   else drawer.style.transform='translateY(0)';
+  });
+  const close=()=>{
+   document.body.style.overflow='';toggle.setAttribute('aria-expanded','false');
+   if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches) gsap.to(drawer,{yPercent:-105,duration:.3,onComplete:()=>{drawer.classList.remove('is-open');drawer.setAttribute('aria-hidden','true')}});
+   else{drawer.style.transform='translateY(-105%)';drawer.classList.remove('is-open');drawer.setAttribute('aria-hidden','true')}
+  };
+  if(closeButton)closeButton.addEventListener('click',close);
+  drawer.addEventListener('click',event=>{if(event.target===drawer)close()});
+ }
+ const project=projects.find(item=>item.slug===document.body.dataset.project);
+ if(!project)return;
+ document.title=project.name+' | Project Case Study | Syed Hussain Abbas Zaidi';
+ const setText=(selector,value)=>{const el=$(selector);if(el)el.textContent=value};
+ setText('#caseName',project.name);setText('#caseTech',project.tech);setText('#caseUrl',project.url);
+ const image=$('#caseImage');
+ if(image){image.src='/'+project.image;image.alt=project.name+' original portfolio preview';image.loading='eager';image.decoding='async'}
+ const live=$('#liveLink');
+ if(live){live.href=project.url;live.target='_blank';live.rel='noopener noreferrer'}
+ const description=$('meta[name="description"]');
+ if(description)description.content=project.name+' project listed in the portfolio of Syed Hussain Abbas Zaidi. Original platform label: '+project.tech+'.';
+ if(window.gsap&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.case-hero h1,.case-hero p',{y:30,opacity:0,duration:.7,stagger:.1});
+  gsap.from('#caseImage',{clipPath:'inset(0 0 100% 0)',duration:1,scrollTrigger:{trigger:'#caseImage',start:'top 85%'}});
+  gsap.from('.whatsapp-float',{scale:0,opacity:0,duration:.5,delay:.7,ease:'back.out(1.7)'});
+ }
+ document.querySelectorAll('a[target="_blank"]').forEach(link=>link.rel='noopener noreferrer');
+})();
