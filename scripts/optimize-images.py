@@ -34,12 +34,13 @@ def main():
                 image = image.convert("RGBA" if has_alpha else "RGB")
                 data = encode_webp(image, 88 if has_alpha else QUALITY)
             if path.suffix.lower() == ".webp":
-                if len(data) >= path.stat().st_size * 0.98:
+                old_size = path.stat().st_size
+                if len(data) >= old_size * 0.98:
                     continue
                 path.write_bytes(data)
                 optimized += 1
-                saved += path.stat().st_size - len(data)
-                print(f"RECOMPRESS {path}: {path.stat().st_size} -> {len(data)} bytes", flush=True)
+                saved += old_size - len(data)
+                print(f"RECOMPRESS {path}: {old_size} -> {len(data)} bytes", flush=True)
             else:
                 if len(data) >= path.stat().st_size * 0.98:
                     continue
