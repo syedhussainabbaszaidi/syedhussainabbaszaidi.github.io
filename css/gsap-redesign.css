@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 
-:root{--ink:#07130f;--ink-2:#0d2119;--panel:#10291f;--paper:#f3f4ec;--muted:#a9b9ae;--accent:#b9f36b;--line:rgba(236,245,235,.13);--display:'Space Grotesk',sans-serif;--body:'DM Sans',sans-serif}
+
+:root{--ink:#07130f;--ink-2:#0d2119;--panel:#10291f;--paper:#f3f4ec;--muted:#a9b9ae;--accent:#b9f36b;--line:rgba(236,245,235,.13);--display:'Outfit',sans-serif;--body:'Outfit',sans-serif}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);overflow-x:hidden}
 .main_container{position:relative!important;inset:auto!important;width:100%;max-width:none;overflow:clip;background:var(--ink)}
