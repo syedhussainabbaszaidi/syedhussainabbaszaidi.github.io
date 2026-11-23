@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/optimize-images.yml"
       - "scripts/optimize-images.py"
+      - "webImages/**"
 
 permissions:
   contents: write
