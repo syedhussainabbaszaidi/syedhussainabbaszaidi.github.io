@@ -358,3 +358,29 @@ body.services-page .service-list-section .service-card:focus-visible{
 @media(max-width:950px){.us-hero-v2 .us-hero-wrap{grid-template-columns:1fr .9fr;gap:20px}.us-hero-v2 .us-hero-copy h1{font-size:clamp(52px,6.2vw,72px)}.us-hero-showcase{height:390px}.us-browser-main{min-height:225px;padding:18px}.us-product-art{height:175px}.us-portfolio-track{grid-auto-columns:calc((100% - 18px)/2)}}
 @media(max-width:700px){.us-hero-v2{padding:120px 0 80px}.us-hero-v2 .us-hero-wrap{grid-template-columns:1fr;gap:5px}.us-hero-v2 .us-hero-copy h1{font-size:clamp(48px,11.5vw,66px)}.us-hero-showcase{height:340px;margin:5px -4px 0}.us-browser{width:90%}.us-browser-main{min-height:190px;padding:16px}.us-product-art{height:155px}.us-browser-nav{padding:0 12px;height:40px}.us-browser-nav span{font-size:6px}.us-browser-nav strong{font-size:10px}.us-metric-card{left:0;bottom:8px;padding:12px 14px}.us-metric-card strong{font-size:18px}.us-hero-v2 .us-float-one{top:12px;right:0}.us-hero-v2 .us-float-two{bottom:30px;right:0}.us-portfolio-heading{align-items:flex-end;padding:40px 0 25px}.us-portfolio-heading h2{font-size:clamp(40px,10vw,55px)}.us-portfolio-heading p{font-size:12px}.us-slider-controls button{width:40px;height:40px}.us-portfolio-track{grid-auto-columns:86%;gap:13px}.us-portfolio-image{height:245px}.us-portfolio-meta h3{font-size:19px}.us-slider-progress{font-size:7px;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.us-browser,.us-portfolio-image img{transition:none!important;scroll-behavior:auto}}
+
+/* WordPress live portfolio carousel */
+.wp-live-portfolio{background:#e9ece5;color:#17231a;overflow:hidden}
+.wp-live-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:52px 0 34px}
+.wp-live-heading h2{font-size:clamp(42px,5.6vw,70px);line-height:.98;letter-spacing:-.075em;font-weight:500;margin:0}
+.wp-live-heading h2 em{font-style:normal;color:#899b7b}
+.wp-live-heading p{max-width:510px;font-size:13px;line-height:1.85;color:#68736a;margin:18px 0 0}
+.wp-live-controls{display:flex;gap:9px;flex-shrink:0}
+.wp-live-controls button{width:48px;height:48px;border:1px solid #c6cec0;background:#f8f8f3;border-radius:50%;font-size:20px;color:#253328;cursor:pointer;transition:background .25s,transform .25s}
+.wp-live-controls button:hover{background:var(--lime);transform:translateY(-3px)}
+.wp-live-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:2px 2px 18px;scrollbar-width:thin;scrollbar-color:#a9b58e transparent}
+.wp-live-card{min-width:0;scroll-snap-align:start}
+.wp-live-card>a{display:block;color:inherit}
+.wp-live-image{height:260px;position:relative;overflow:hidden;background:#dce1d5;border-radius:6px}
+.wp-live-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.wp-live-card:hover .wp-live-image img{transform:scale(1.055)}
+.wp-live-image>span{position:absolute;right:12px;bottom:12px;padding:10px 12px;background:#17241b;color:#fff;font-size:8px;letter-spacing:.1em;border-radius:3px}
+.wp-live-meta{display:flex;align-items:center;justify-content:space-between;padding:16px 2px 8px}
+.wp-live-meta small{font-size:8px;letter-spacing:.13em;color:#849078}
+.wp-live-meta h3{font-size:21px;font-weight:500;letter-spacing:-.04em;margin:6px 0 0}
+.wp-live-meta>b{font-size:10px;color:#849078}
+.wp-live-foot{display:flex;justify-content:space-between;gap:15px;padding-top:15px;border-top:1px solid #cbd2c6;font-size:8px;letter-spacing:.13em;color:#778273}
+.wp-live-foot a{font-weight:600;color:#394735}
+@media(max-width:950px){.wp-live-track{grid-auto-columns:calc((100% - 18px)/2)}}
+@media(max-width:700px){.wp-live-heading{align-items:flex-end;padding:40px 0 25px;gap:12px}.wp-live-heading h2{font-size:clamp(39px,10vw,54px)}.wp-live-heading p{font-size:12px;max-width:100%}.wp-live-controls button{width:40px;height:40px}.wp-live-track{grid-auto-columns:86%;gap:13px}.wp-live-image{height:245px}.wp-live-meta h3{font-size:19px}.wp-live-foot{font-size:7px;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.wp-live-track{scroll-behavior:auto}.wp-live-image img{transition:none!important}}
