@@ -190,3 +190,15 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   gsap.from('.service-faq-grid>*',{y:28,opacity:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.service-faq',start:'top 85%',once:true}});
   gsap.from('.service-cta-inner>*',{y:26,opacity:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.service-cta',start:'top 85%',once:true}});
 })();
+
+/* CMS service page GSAP choreography. */
+(()=> {
+ const root=document.querySelector('.cms-page');
+ if(!root||!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ gsap.registerPlugin(ScrollTrigger);
+ const hero=root.querySelector('.cms-hero');
+ if(hero){const tl=gsap.timeline({defaults:{ease:'power3.out'}});tl.from(hero.querySelector('.eyebrow'),{y:18,opacity:0,duration:.55}).from(hero.querySelector('h1'),{y:55,opacity:0,duration:.9},'-.2').from(hero.querySelector('p'),{y:22,opacity:0,duration:.7},'-.45').from(hero.querySelectorAll('.service-hero-actions>*'),{y:18,opacity:0,duration:.5,stagger:.1},'-.3').from(hero.querySelector('.cms-hero-orbit'),{scale:.75,opacity:0,duration:1},'-.65');}
+ const reveal=(selector,trigger=selector)=>gsap.utils.toArray(selector,root).forEach(el=>gsap.from(el,{y:34,opacity:0,duration:.72,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
+ reveal('.cms-intro-grid');reveal('.cms-stat-row>div');reveal('.cms-capability-grid article');reveal('.cms-platform-list article');reveal('.cms-process-grid article');reveal('.cms-seo-grid>*');reveal('.cms-project-card');reveal('.cms-faq .service-faq-grid>*');reveal('.cms-cta .service-outcome-card');
+ window.addEventListener('load',()=>ScrollTrigger.refresh(),{once:true});
+})();
