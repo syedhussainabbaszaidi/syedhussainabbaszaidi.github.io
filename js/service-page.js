@@ -151,7 +151,7 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 /* Industry pages: GSAP hero, content reveals and staggered sector cards. */
 (()=> {
   const root=document.querySelector('.service-detail-page');
-  if(!root||!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(!root||!location.pathname.startsWith('/industries/')||!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   gsap.registerPlugin(ScrollTrigger);
   const hero=root.querySelector('.detail-service-hero');
   if(hero){
