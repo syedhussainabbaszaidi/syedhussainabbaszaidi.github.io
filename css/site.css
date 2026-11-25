@@ -1174,3 +1174,16 @@ body.services-page .service-list-section .service-card:focus-visible{
     max-width:100%;
   }
 }
+
+
+/* Add a little breathing room between CTA labels and their arrow icons. */
+.hero-actions>a span,
+.service-hero-actions>a span,
+.contact-hero-actions>a span,
+.ai-us-actions>a span,
+.resume-links>a span,
+.us-shopify-hero .service-hero-actions>a span,
+.case-hero .resume-links>a span,
+.resume-premium-hero .resume-links>a span{
+  margin-left:10px;
+}
