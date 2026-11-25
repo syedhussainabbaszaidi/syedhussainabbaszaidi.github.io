@@ -69,3 +69,26 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 window.addEventListener('load',()=>setTimeout(hide,150),{once:true});window.addEventListener('pageshow',e=>{if(e.persisted)hide()},{once:true});timer=setTimeout(hide,2200);
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)setTimeout(hide,120);
 }})();
+
+/* Enforce the single canonical logo asset site-wide, including old hard-coded references. */
+(()=> {
+  const canonical='/webImages/hussain-logo.webp';
+  const isOldLogo=value=>typeof value==='string'&&/(?:\/)?(?:webImages\/)?hussain-logo\.png|SHAZ_navbar_logo\.(?:png|svg)/i.test(value);
+  const normalize=()=>{
+    document.querySelectorAll('img,source,link').forEach(el=>{
+      for(const attr of ['src','srcset','href']){
+        const value=el.getAttribute(attr);
+        if(isOldLogo(value)) el.setAttribute(attr,value.replace(/(?:\/)?(?:webImages\/)?hussain-logo\.png|SHAZ_navbar_logo\.(?:png|svg)/ig,canonical));
+      }
+    });
+    document.querySelectorAll('[style*="hussain-logo.png"],[style*="SHAZ_navbar_logo"]').forEach(el=>{
+      const value=el.getAttribute('style');
+      el.setAttribute('style',value.replace(/(?:\/)?(?:webImages\/)?hussain-logo\.png|SHAZ_navbar_logo\.(?:png|svg)/ig,canonical));
+    });
+  };
+  normalize();
+  if(!window.__shazLogoNormalizeObserver&&document.documentElement){
+    window.__shazLogoNormalizeObserver=new MutationObserver(normalize);
+    window.__shazLogoNormalizeObserver.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src','srcset','href','style']});
+  }
+})();
