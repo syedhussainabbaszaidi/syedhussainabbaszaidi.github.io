@@ -761,3 +761,90 @@ body.services-page .service-list-section .service-card:focus-visible{
 .resume-links .text-link{border:1px solid #ffffff60;border-radius:99px;padding:14px 18px;color:#e3e9e2;text-decoration:none;line-height:1.35}
 .resume-links .text-link:hover{border-color:var(--lime);color:var(--lime)}
 @media(max-width:700px){.resume-links{max-width:100%;gap:10px}.resume-links>a{padding:13px 10px;font-size:12px;min-height:50px}}
+
+/* Site-wide CTA consistency: equal height, centered labels and balanced paired actions. */
+.btn{
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:14px 20px!important;
+  line-height:1.2;
+  text-align:center;
+}
+.hero-actions,
+.service-hero-actions,
+.contact-hero-actions,
+.ai-us-actions,
+.resume-links,
+.us-shopify-hero .service-hero-actions{
+  display:flex;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:14px!important;
+}
+.hero-actions>a,
+.service-hero-actions>a,
+.contact-hero-actions>a,
+.ai-us-actions>a,
+.resume-links>a,
+.us-shopify-hero .service-hero-actions>a{
+  box-sizing:border-box;
+  display:inline-flex;
+  flex:1 1 190px;
+  width:auto;
+  max-width:300px;
+  min-width:0;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
+  padding:14px 20px!important;
+  margin:0;
+  line-height:1.2;
+  text-align:center;
+  text-decoration:none;
+  border-radius:999px;
+}
+.hero-actions>.text-link,
+.service-hero-actions>.text-link,
+.contact-hero-actions>.text-link,
+.ai-us-actions>.ai-us-text-link,
+.resume-links>.text-link,
+.us-shopify-hero .service-hero-actions>.text-link,
+.hero-actions>.under-link,
+.service-hero-actions>.under-link,
+.contact-hero-actions>.under-link,
+.hero-actions>.view-all-link,
+.service-hero-actions>.view-all-link{
+  border:1px solid rgba(255,255,255,.42);
+  padding:14px 20px!important;
+  min-height:50px;
+  color:inherit;
+}
+.resume-links{justify-content:center;max-width:460px;margin-left:auto;margin-right:auto}
+@media(max-width:600px){
+  .hero-actions,
+  .service-hero-actions,
+  .contact-hero-actions,
+  .ai-us-actions,
+  .resume-links,
+  .us-shopify-hero .service-hero-actions{
+    width:100%;
+    gap:10px!important;
+  }
+  .hero-actions>a,
+  .service-hero-actions>a,
+  .contact-hero-actions>a,
+  .ai-us-actions>a,
+  .resume-links>a,
+  .us-shopify-hero .service-hero-actions>a{
+    flex:1 1 145px;
+    max-width:none;
+    min-height:48px;
+    padding:13px 12px!important;
+    font-size:13px!important;
+  }
+}
