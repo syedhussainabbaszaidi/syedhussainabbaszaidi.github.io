@@ -17,7 +17,7 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 (()=>{const facebookUrl='https://www.facebook.com/Hussainsoftwareengineer/';const fixFooterLinks=()=>{document.querySelectorAll('footer a,.footer a').forEach(a=>{if(/github\.com/i.test(a.getAttribute('href')||'')||/github/i.test(a.textContent||'')){a.href=facebookUrl;a.textContent='Facebook ↗';a.target='_blank';a.rel='noopener noreferrer';}});};fixFooterLinks();if(window.MutationObserver&&document.documentElement){const observer=new MutationObserver(fixFooterLinks);observer.observe(document.documentElement,{childList:true,subtree:true});}})();
 
 
-/* Single-instance brand logos and a reliable, accessible page loader */
+/* Single-instance brand logos and a minimum-three-second, fail-safe loader */
 (()=> {
   if (window.__shazBrandInit) return;
   window.__shazBrandInit = true;
@@ -33,7 +33,6 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     return img;
   };
 
-  // Replace, rather than append, so a repeated script execution can never stack logos.
   document.querySelectorAll('.header .logo,.drawer-top .logo,.footer-brand').forEach(link => {
     link.replaceChildren(makeLogo('shaz-brand-img', 'Hussain — Software Engineer'));
     link.setAttribute('aria-label', 'Hussain — Software Engineer');
@@ -60,12 +59,11 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
       @keyframes shaz-orbit{to{transform:rotate(360deg)}}
       @keyframes shaz-logo-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
       @media(max-width:600px){.header .shaz-brand-img{width:125px!important;max-height:30px!important}.shaz-loader-content{width:min(82vw,290px)}}
-      @media(prefers-reduced-motion:reduce){.shaz-loader-orbit,.shaz-loader-logo,.shaz-loader-track span{animation:none!important}.shaz-preloader{transition:opacity .15s,visibility .15s}}
+      @media(prefers-reduced-motion:reduce){.shaz-loader-orbit,.shaz-loader-logo,.shaz-loader-track span{animation:none!important}.shaz-preloader{transition:opacity .2s ease,visibility .2s ease}}
     `;
     document.head.appendChild(style);
   }
 
-  // Never create a second overlay if the script is included more than once.
   if (!document.getElementById('shaz-preloader') && document.body) {
     const loader = document.createElement('div');
     loader.className = 'shaz-preloader';
@@ -75,31 +73,45 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     loader.innerHTML = '<div class="shaz-loader-orbit" aria-hidden="true"></div><div class="shaz-loader-content"><img class="shaz-loader-logo" src="' + logoSrc + '" alt="Hussain — Software Engineer" width="2048" height="371" decoding="async"><div class="shaz-loader-track" aria-hidden="true"><span></span></div><span class="shaz-loader-caption">Getting things ready</span></div>';
     document.body.prepend(loader);
 
+    const minimumVisibleMs = 3000;
+    const maximumVisibleMs = 5200;
+    const startedAt = Date.now();
+    let pageLoaded = document.readyState === 'complete';
     let dismissed = false;
-    let fallbackTimer;
+    let minTimer;
+    let maxTimer;
+
     const dismiss = () => {
       if (dismissed) return;
       dismissed = true;
-      clearTimeout(fallbackTimer);
+      clearTimeout(minTimer);
+      clearTimeout(maxTimer);
       loader.classList.add('is-leaving');
       window.setTimeout(() => loader.remove(), 500);
     };
 
-    // Wait only for the document structure, not every image or third-party asset.
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => window.setTimeout(dismiss, 350), { once: true });
-    } else {
-      window.setTimeout(dismiss, 350);
+    const tryDismiss = () => {
+      if (!pageLoaded || dismissed) return;
+      const remaining = Math.max(0, minimumVisibleMs - (Date.now() - startedAt));
+      clearTimeout(minTimer);
+      minTimer = window.setTimeout(dismiss, remaining);
+    };
+
+    if (!pageLoaded) {
+      window.addEventListener('load', () => {
+        pageLoaded = true;
+        tryDismiss();
+      }, { once: true });
     }
-    window.addEventListener('load', () => window.setTimeout(dismiss, 200), { once: true });
-    window.addEventListener('pageshow', event => { if (event.persisted) dismiss(); }, { once: true });
-    fallbackTimer = window.setTimeout(dismiss, 2500);
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      window.setTimeout(dismiss, 150);
-    }
+    tryDismiss();
+
+    // Safety net: never leave the page covered if a third-party resource hangs.
+    maxTimer = window.setTimeout(dismiss, maximumVisibleMs);
+    window.addEventListener('pageshow', event => {
+      if (event.persisted) dismiss();
+    }, { once: true });
   }
 })();
-
 
 /* Enforce the single canonical logo asset site-wide, including old hard-coded references. */
 (()=> {
