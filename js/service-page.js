@@ -138,3 +138,27 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     window.__shazLogoNormalizeObserver.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src','srcset','href','style']});
   }
 })();
+
+/* Industry pages: GSAP hero, content reveals and staggered sector cards. */
+(()=> {
+  const root=document.querySelector('.service-detail-page');
+  if(!root||!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  gsap.registerPlugin(ScrollTrigger);
+  const hero=root.querySelector('.detail-service-hero');
+  if(hero){
+    const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.from(hero.querySelector('.eyebrow'),{y:18,opacity:0,duration:.55})
+      .from(hero.querySelector('h1'),{y:58,opacity:0,duration:.95},'-=.2')
+      .from(hero.querySelector('p'),{y:24,opacity:0,duration:.7},'-=.5')
+      .from(hero.querySelectorAll('.service-hero-actions>*'),{y:18,opacity:0,duration:.55,stagger:.12},'-=.35');
+  }
+  const reveal=(selector,vars={})=>gsap.utils.toArray(selector).forEach((el,i)=>gsap.from(el,{y:34,opacity:0,duration:.75,ease:'power3.out',...vars,scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
+  reveal('.service-intro-grid');
+  reveal('.service-features-heading');
+  gsap.utils.toArray('.service-feature').forEach((el,i)=>gsap.from(el,{x:34,opacity:0,duration:.7,delay:(i%2)*.05,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}}));
+  gsap.utils.toArray('.industry-use-card').forEach((el,i)=>gsap.from(el,{y:42,rotateX:5,opacity:0,duration:.75,delay:(i%4)*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}}));
+  gsap.utils.toArray('.industry-outcome-item').forEach((el,i)=>gsap.from(el,{x:28,opacity:0,duration:.7,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',once:true}}));
+  reveal('.service-outcome-card');
+  reveal('.service-faq-grid');
+  window.addEventListener('load',()=>ScrollTrigger.refresh(),{once:true});
+})();
