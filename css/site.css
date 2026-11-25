@@ -1234,3 +1234,11 @@ body.services-page .service-list-section .service-card:focus-visible{
 .service-detail-page .detail-service-hero .service-hero-actions{
   align-items:flex-end!important;
 }
+
+/* Improve lime text contrast on the light industry content sections. */
+.service-detail-page .industry-section-heading h2 em,
+.service-detail-page .industry-outcome-grid>h2 em,
+.service-detail-page .industry-use-card>span,
+.service-detail-page .industry-outcome-item>span{
+  color:#587526!important;
+}
