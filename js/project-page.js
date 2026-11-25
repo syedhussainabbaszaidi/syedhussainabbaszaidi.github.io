@@ -43,7 +43,7 @@ const f=document.querySelector(".footer");if(f)f.innerHTML='<div class="wrap"><d
 
 /* Single-instance brand logo and accessible loader */
 (()=>{if(window.__shazBrandInit)return;window.__shazBrandInit=true;
-const src='/SHAZ_navbar_logo.svg',img=(cls)=>{const n=document.createElement('img');n.src=src;n.alt='Hussain — Software Engineer';n.className=cls;n.decoding='async';return n};
+const src='/SHAZ_navbar_logo.png',img=(cls)=>{const n=document.createElement('img');n.src=src;n.alt='Hussain — Software Engineer';n.className=cls;n.decoding='async';return n};
 document.querySelectorAll('.header .logo,.drawer-top .logo,.footer-brand').forEach(a=>{a.replaceChildren(img('shaz-brand-img'));a.setAttribute('aria-label','Hussain — Software Engineer')});
 if(!document.getElementById('shaz-brand-styles')){const s=document.createElement('style');s.id='shaz-brand-styles';s.textContent=`
 .header .logo,.drawer-top .logo,.footer-brand{display:flex!important;align-items:center;width:auto!important;height:auto!important;padding:0!important;background:none!important;border:0!important;overflow:visible}
