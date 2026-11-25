@@ -111,7 +111,7 @@ db.addEventListener("click",()=>{const o=!drop.classList.contains("is-open");dro
     };
 
     const tryDismiss = () => {
-      if (!pageLoaded || dismissed) return;
+      if (dismissed) return;
       const remaining = Math.max(0, minimumVisibleMs - (Date.now() - startedAt));
       clearTimeout(minTimer);
       minTimer = window.setTimeout(dismiss, remaining);
