@@ -69,8 +69,8 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 
   let showInitialLoader = false;
   try {
-    showInitialLoader = sessionStorage.getItem('shaz_initial_loader_seen') !== '1';
-    if (showInitialLoader) sessionStorage.setItem('shaz_initial_loader_seen', '1');
+    showInitialLoader = localStorage.getItem('shaz_initial_loader_seen') !== '1';
+    if (showInitialLoader) localStorage.setItem('shaz_initial_loader_seen', '1');
   } catch (error) {
     showInitialLoader = !window.__shazInitialLoaderSeen;
     window.__shazInitialLoaderSeen = true;
