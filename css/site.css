@@ -431,3 +431,6 @@ body.services-page .service-list-section .service-card:focus-visible{
 .footer-brand img{width:clamp(160px,18vw,230px)!important;max-height:46px!important}
 .drawer-top .logo img{width:150px!important;max-height:34px!important}
 @media(max-width:600px){.header .logo img{width:clamp(132px,36vw,165px)!important;max-height:34px!important}}
+
+/* Prevent the old text-mark from flashing before the shared logo script injects the WebP brand asset. */
+.header .logo:not(:has(img)),.drawer-top .logo:not(:has(img)),.footer-brand:not(:has(img)){visibility:hidden!important}
