@@ -969,3 +969,31 @@ body.services-page .service-list-section .service-card:focus-visible{
     font-size:12px;
   }
 }
+
+/* Keep the second hero CTA as the original simple underlined text link. */
+.case-hero .resume-links>a:nth-child(2),
+.resume-premium-hero .resume-links>a:nth-child(2){
+  display:inline-flex;
+  flex:0 0 auto;
+  width:auto;
+  max-width:none;
+  min-width:0;
+  min-height:0;
+  align-items:center;
+  justify-content:flex-start;
+  padding:0 0 8px!important;
+  border:0;
+  border-bottom:1px solid #ffffff60;
+  border-radius:0;
+  background:transparent;
+  color:#e3e9e2;
+  line-height:1.2;
+  text-align:left;
+  text-decoration:none;
+}
+.case-hero .resume-links>a:nth-child(2):hover,
+.resume-premium-hero .resume-links>a:nth-child(2):hover{
+  border-color:var(--lime);
+  color:var(--lime);
+  transform:translateY(-2px);
+}
