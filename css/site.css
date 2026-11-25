@@ -434,3 +434,90 @@ body.services-page .service-list-section .service-card:focus-visible{
 
 /* Prevent the old text-mark from flashing before the shared logo script injects the WebP brand asset. */
 .header .logo:not(:has(img)),.drawer-top .logo:not(:has(img)),.footer-brand:not(:has(img)){visibility:hidden!important}
+
+
+/* Mobile navigation: slide in from the right, with a dedicated Services sub-view. */
+@media(max-width:700px){
+  .global-drawer{
+    inset:0 0 0 auto!important;
+    width:min(100%,520px)!important;
+    max-width:100vw;
+    padding:22px 22px 24px!important;
+    transform:translateX(105%);
+    overflow:hidden!important;
+    display:flex;
+    flex-direction:column;
+    box-shadow:-24px 0 70px rgba(0,0,0,.28);
+    transition:visibility .3s!important;
+    will-change:transform;
+  }
+  .global-drawer.is-open{visibility:visible;pointer-events:auto}
+  .global-drawer .drawer-top{flex:0 0 auto;min-height:52px}
+  .global-drawer .drawer-main-view{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+  .global-drawer .drawer-nav{display:grid;gap:0;margin:clamp(28px,8vh,64px) 0 28px}
+  .global-drawer .drawer-nav>a,
+  .global-drawer .drawer-nav>.drawer-services-open{
+    width:100%;display:flex;align-items:center;justify-content:space-between;
+    padding:15px 0;border:0;border-bottom:1px solid #ffffff24;
+    background:transparent;color:#fff;text-align:left;
+    font:500 clamp(29px,8vw,42px)/1.05 var(--font);
+    letter-spacing:-.06em;cursor:pointer;
+  }
+  .global-drawer .drawer-nav>.drawer-services-open span{color:var(--lime);font-size:24px}
+  .global-drawer .drawer-bottom{flex:0 0 auto;padding-top:16px;border-top:1px solid #ffffff20}
+  .drawer-services-panel{
+    position:absolute;inset:84px 18px 94px;
+    overflow-y:auto;overscroll-behavior:contain;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateX(28px);
+  }
+  .global-drawer.services-view .drawer-main-view{visibility:hidden;pointer-events:none}
+  .global-drawer.services-view .drawer-services-panel{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translateX(0)
+  }
+  .drawer-services-panel-top{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    margin:0 0 22px;padding-bottom:15px;border-bottom:1px solid #ffffff25
+  }
+  .drawer-services-panel-top>span{font-size:9px;letter-spacing:.16em;color:#aebba9}
+  .drawer-back-menu{
+    border:0;background:transparent;color:var(--lime);padding:8px 0;
+    font:600 13px var(--font);cursor:pointer
+  }
+  .drawer-services-links{
+    display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px!important;padding:0!important
+  }
+  .drawer-service-tile{
+    min-height:112px;display:flex!important;flex-direction:column;
+    align-items:flex-start!important;justify-content:space-between!important;
+    gap:12px;padding:13px!important;border:1px solid #ffffff22!important;
+    border-radius:11px;background:linear-gradient(145deg,#ffffff0d,#ffffff04);
+    color:#f4f6ef!important;text-decoration:none;
+    font-size:12px!important;line-height:1.25;letter-spacing:0!important;
+    transition:background .25s,border-color .25s,transform .25s;
+  }
+  .drawer-service-tile:active{transform:scale(.97);background:#c8f36a12;border-color:#c8f36a88}
+  .drawer-service-icon{
+    width:31px;height:31px;display:grid;place-items:center;
+    border-radius:9px;background:#c8f36a18;color:var(--lime);
+    font:600 15px var(--font);letter-spacing:-.04em
+  }
+  .drawer-service-name{font-size:12px;font-weight:500;line-height:1.3}
+  .drawer-service-arrow{align-self:flex-end;color:var(--lime);font-size:13px}
+  .drawer-all-services{
+    display:flex;justify-content:center;margin-top:16px;padding:14px;
+    border:1px solid #c8f36a77;border-radius:999px;color:var(--lime);
+    font-size:12px;font-weight:600
+  }
+}
+@media(max-width:380px){
+  .global-drawer{padding-inline:17px!important}
+  .drawer-services-panel{inset-inline:14px}
+  .drawer-services-links{gap:8px!important}
+  .drawer-service-tile{min-height:104px;padding:11px!important}
+  .drawer-service-name{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .global-drawer,.drawer-service-tile{transition:none!important}
+}
