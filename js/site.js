@@ -57,7 +57,7 @@ db.addEventListener("click",()=>{const o=!drop.classList.contains("is-open");dro
       .shaz-brand-img{display:block!important;width:clamp(125px,13vw,185px)!important;height:auto!important;max-height:38px!important;object-fit:contain!important}
       .footer-brand .shaz-brand-img{width:clamp(150px,18vw,215px)!important;max-height:44px!important}
       .drawer-top .shaz-brand-img{width:145px!important;max-height:34px!important}
-      .shaz-preloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#050706;opacity:1;visibility:visible;pointer-events:auto;transition:opacity .45s ease,visibility .45s ease;overflow:hidden}
+      .shaz-preloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#050706;opacity:1;visibility:visible;pointer-events:auto;transition:opacity .25s ease,visibility .25s ease;overflow:hidden}
       .shaz-preloader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
       .shaz-loader-orbit{position:absolute;width:min(68vw,500px);aspect-ratio:1;border:1px solid rgba(190,235,92,.16);border-radius:50%;animation:shaz-orbit 5s linear infinite}
       .shaz-loader-orbit:after{content:"";position:absolute;inset:12%;border:1px solid rgba(190,235,92,.18);border-radius:50%}
@@ -75,7 +75,16 @@ db.addEventListener("click",()=>{const o=!drop.classList.contains("is-open");dro
     document.head.appendChild(style);
   }
 
-  if (!document.getElementById('shaz-preloader') && document.body) {
+  let showInitialLoader = false;
+  try {
+    showInitialLoader = sessionStorage.getItem('shaz_initial_loader_seen') !== '1';
+    if (showInitialLoader) sessionStorage.setItem('shaz_initial_loader_seen', '1');
+  } catch (error) {
+    showInitialLoader = !window.__shazInitialLoaderSeen;
+    window.__shazInitialLoaderSeen = true;
+  }
+
+  if (showInitialLoader && !document.getElementById('shaz-preloader') && document.body) {
     const loader = document.createElement('div');
     loader.className = 'shaz-preloader';
     loader.id = 'shaz-preloader';
@@ -84,8 +93,8 @@ db.addEventListener("click",()=>{const o=!drop.classList.contains("is-open");dro
     loader.innerHTML = '<div class="shaz-loader-orbit" aria-hidden="true"></div><div class="shaz-loader-content"><img class="shaz-loader-logo" src="' + logoSrc + '" alt="Hussain — Software Engineer" width="2048" height="371" decoding="async"><div class="shaz-loader-track" aria-hidden="true"><span></span></div><span class="shaz-loader-caption">Getting things ready</span></div>';
     document.body.prepend(loader);
 
-    const minimumVisibleMs = 3000;
-    const maximumVisibleMs = 5200;
+    const minimumVisibleMs = 1250;
+    const maximumVisibleMs = 2500;
     const startedAt = Date.now();
     let pageLoaded = document.readyState === 'complete';
     let dismissed = false;
