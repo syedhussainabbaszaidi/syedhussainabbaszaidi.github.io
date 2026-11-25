@@ -639,3 +639,32 @@ body.services-page .service-list-section .service-card:focus-visible{
   .drawer-service-tile{min-height:116px!important;padding:12px!important}
   .drawer-all-services{margin-top:30px!important}
 }
+
+
+/* Keep the canonical brand image sized consistently on every project detail page. */
+.header .logo{
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
+  flex:0 0 auto!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  overflow:visible!important;
+  font-size:0!important;
+  letter-spacing:normal!important;
+}
+.header .logo img,
+.global-drawer .logo img,
+.footer .footer-brand img{
+  display:block!important;
+  width:clamp(145px,15vw,210px)!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:42px!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+}
+@media(max-width:600px){
+  .header .logo img{width:clamp(132px,36vw,165px)!important;max-height:34px!important}
+}
