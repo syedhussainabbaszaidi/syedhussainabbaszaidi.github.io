@@ -1073,3 +1073,104 @@ body.services-page .service-list-section .service-card:focus-visible{
     gap:16px!important;
   }
 }
+
+
+/* Final CTA alignment: apply the same spacing and primary-button sizing to every hero pair,
+   including the homepage banner, service pages, project details and resume. */
+.hero-actions,
+.service-hero-actions,
+.contact-hero-actions,
+.ai-us-actions,
+.resume-links,
+.us-shopify-hero .service-hero-actions,
+.case-hero .resume-links,
+.resume-premium-hero .resume-links{
+  column-gap:24px!important;
+  row-gap:16px!important;
+}
+
+/* Keep every first/primary CTA on the same base width; longer labels expand naturally. */
+.hero-actions>a:first-child,
+.service-hero-actions>a:first-child,
+.contact-hero-actions>a:first-child,
+.ai-us-actions>a:first-child,
+.resume-links>a:first-child,
+.us-shopify-hero .service-hero-actions>a:first-child,
+.case-hero .resume-links>a:first-child,
+.resume-premium-hero .resume-links>a:first-child{
+  box-sizing:border-box;
+  flex:0 1 auto!important;
+  width:max-content;
+  min-width:220px;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+
+/* The second action is consistently a simple underlined text link, never a pill button. */
+.hero-actions>a:nth-child(2),
+.service-hero-actions>a:nth-child(2),
+.contact-hero-actions>a:nth-child(2),
+.ai-us-actions>a:nth-child(2),
+.resume-links>a:nth-child(2),
+.us-shopify-hero .service-hero-actions>a:nth-child(2),
+.case-hero .resume-links>a:nth-child(2),
+.resume-premium-hero .resume-links>a:nth-child(2){
+  display:inline-flex;
+  flex:0 0 auto!important;
+  width:auto;
+  min-width:0;
+  max-width:100%;
+  min-height:0;
+  align-items:center;
+  justify-content:flex-start;
+  padding:0 0 8px!important;
+  margin:0;
+  border:0;
+  border-bottom:1px solid #ffffff60;
+  border-radius:0;
+  background:transparent;
+  color:#e3e9e2;
+  line-height:1.2;
+  text-align:left;
+  text-decoration:none;
+  box-shadow:none;
+}
+.hero-actions>a:nth-child(2):hover,
+.service-hero-actions>a:nth-child(2):hover,
+.contact-hero-actions>a:nth-child(2):hover,
+.ai-us-actions>a:nth-child(2):hover,
+.resume-links>a:nth-child(2):hover,
+.us-shopify-hero .service-hero-actions>a:nth-child(2):hover,
+.case-hero .resume-links>a:nth-child(2):hover,
+.resume-premium-hero .resume-links>a:nth-child(2):hover{
+  border-bottom-color:var(--lime);
+  color:var(--lime);
+  transform:translateY(-2px);
+}
+
+@media(max-width:600px){
+  .hero-actions,
+  .service-hero-actions,
+  .contact-hero-actions,
+  .ai-us-actions,
+  .resume-links,
+  .us-shopify-hero .service-hero-actions,
+  .case-hero .resume-links,
+  .resume-premium-hero .resume-links{
+    column-gap:18px!important;
+    row-gap:14px!important;
+  }
+  .hero-actions>a:first-child,
+  .service-hero-actions>a:first-child,
+  .contact-hero-actions>a:first-child,
+  .ai-us-actions>a:first-child,
+  .resume-links>a:first-child,
+  .us-shopify-hero .service-hero-actions>a:first-child,
+  .case-hero .resume-links>a:first-child,
+  .resume-premium-hero .resume-links>a:first-child{
+    min-width:min(220px,100%);
+    width:max-content;
+    max-width:100%;
+  }
+}
