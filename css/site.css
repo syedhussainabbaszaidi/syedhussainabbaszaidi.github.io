@@ -1229,3 +1229,8 @@ body.services-page .service-list-section .service-card:focus-visible{
     min-width:min(220px,100%);
   }
 }
+
+/* Industry inner-page CTAs: align the underlined secondary link with the primary button's bottom edge. */
+.service-detail-page .detail-service-hero .service-hero-actions{
+  align-items:flex-end!important;
+}
