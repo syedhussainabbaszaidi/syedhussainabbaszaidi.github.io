@@ -901,3 +901,71 @@ body.services-page .service-list-section .service-card:focus-visible{
   color:var(--lime);
   border-bottom-color:var(--lime);
 }
+
+/* Unified hero CTA pair for resume and every portfolio case-study banner. */
+.case-hero .resume-links,
+.resume-premium-hero .resume-links{
+  display:flex;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:14px!important;
+  width:100%;
+  max-width:none;
+  margin:25px 0 0!important;
+}
+.case-hero .resume-links>a,
+.resume-premium-hero .resume-links>a{
+  box-sizing:border-box;
+  display:inline-flex;
+  flex:0 1 220px;
+  width:220px;
+  max-width:220px;
+  min-width:0;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  padding:14px 18px!important;
+  border:1px solid transparent;
+  border-radius:999px;
+  background:var(--lime);
+  color:#172017;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.2;
+  text-align:center;
+  text-decoration:none;
+  white-space:normal;
+}
+.case-hero .resume-links>a:hover,
+.resume-premium-hero .resume-links>a:hover{
+  transform:translateY(-3px);
+}
+.case-hero .resume-links>a:nth-child(2),
+.resume-premium-hero .resume-links>a:nth-child(2){
+  border-color:#ffffff60;
+  background:transparent;
+  color:#e3e9e2;
+}
+.case-hero .resume-links>a:nth-child(2):hover,
+.resume-premium-hero .resume-links>a:nth-child(2):hover{
+  border-color:var(--lime);
+  color:var(--lime);
+}
+@media(max-width:600px){
+  .case-hero .resume-links,
+  .resume-premium-hero .resume-links{
+    justify-content:flex-start!important;
+    gap:10px!important;
+  }
+  .case-hero .resume-links>a,
+  .resume-premium-hero .resume-links>a{
+    flex:1 1 160px;
+    width:auto;
+    max-width:220px;
+    min-height:48px;
+    padding:13px 12px!important;
+    font-size:12px;
+  }
+}
