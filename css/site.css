@@ -848,3 +848,30 @@ body.services-page .service-list-section .service-card:focus-visible{
     font-size:13px!important;
   }
 }
+
+/* Restore the original plain underlined secondary link in service/industry hero actions. */
+.service-hero-actions>a.text-link,
+.us-shopify-hero .service-hero-actions>a.text-link{
+  display:inline-flex;
+  flex:0 0 auto;
+  width:auto;
+  max-width:none;
+  min-width:0;
+  min-height:0;
+  align-items:center;
+  justify-content:flex-start;
+  padding:0 0 8px!important;
+  margin:0;
+  border:0;
+  border-bottom:1px solid #ffffff60;
+  border-radius:0;
+  background:transparent;
+  color:#e2e9e0;
+  line-height:1.2;
+  text-align:left;
+  text-decoration:none;
+}
+.service-hero-actions>a.text-link span,
+.us-shopify-hero .service-hero-actions>a.text-link span{margin-left:12px}
+.service-hero-actions>a.text-link:hover,
+.us-shopify-hero .service-hero-actions>a.text-link:hover{color:var(--lime);border-bottom-color:var(--lime)}
