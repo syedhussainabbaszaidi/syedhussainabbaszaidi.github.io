@@ -22,7 +22,7 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   if (window.__shazBrandInit) return;
   window.__shazBrandInit = true;
 
-  const logoSrc = '/SHAZ_navbar_logo.svg';
+  const logoSrc = '/SHAZ_navbar_logo.png';
   const makeLogo = (className, alt) => {
     const img = document.createElement('img');
     img.src = logoSrc;
