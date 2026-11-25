@@ -162,3 +162,22 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   reveal('.service-faq-grid');
   window.addEventListener('load',()=>ScrollTrigger.refresh(),{once:true});
 })();
+
+/* Industries directory: animated introduction and staggered industry navigation cards. */
+(()=> {
+  const root=document.querySelector('.services-page');
+  if(!root||!location.pathname.startsWith('/industries/')||document.querySelector('.service-detail-page')||!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  gsap.registerPlugin(ScrollTrigger);
+  const hero=root.querySelector('.service-hero');
+  if(hero){
+    const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+    tl.from(hero.querySelector('.eyebrow'),{y:18,opacity:0,duration:.55})
+      .from(hero.querySelector('h1'),{y:58,opacity:0,duration:.9},'-=.2')
+      .from(hero.querySelector('p'),{y:24,opacity:0,duration:.7},'-=.48')
+      .from(hero.querySelectorAll('.service-hero-meta>*'),{y:16,opacity:0,duration:.5,stagger:.1},'-=.3');
+  }
+  gsap.from('.services-heading>*',{y:30,opacity:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.services-heading',start:'top 86%',once:true}});
+  gsap.utils.toArray('.services-grid .service-card').forEach((el,i)=>gsap.from(el,{y:42,opacity:0,duration:.7,delay:(i%3)*.07,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 91%',once:true}}));
+  gsap.from('.service-faq-grid>*',{y:28,opacity:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.service-faq',start:'top 85%',once:true}});
+  gsap.from('.service-cta-inner>*',{y:26,opacity:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.service-cta',start:'top 85%',once:true}});
+})();
