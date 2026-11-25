@@ -103,7 +103,7 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
     };
 
     const tryDismiss = () => {
-      if (!pageLoaded || dismissed) return;
+      if (dismissed) return;
       const remaining = Math.max(0, minimumVisibleMs - (Date.now() - startedAt));
       clearTimeout(minTimer);
       minTimer = window.setTimeout(dismiss, remaining);
