@@ -17,40 +17,85 @@ const arrowWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 (()=>{const facebookUrl='https://www.facebook.com/Hussainsoftwareengineer/';const fixFooterLinks=()=>{document.querySelectorAll('footer a,.footer a').forEach(a=>{if(/github\.com/i.test(a.getAttribute('href')||'')||/github/i.test(a.textContent||'')){a.href=facebookUrl;a.textContent='Facebook ↗';a.target='_blank';a.rel='noopener noreferrer';}});};fixFooterLinks();if(window.MutationObserver&&document.documentElement){const observer=new MutationObserver(fixFooterLinks);observer.observe(document.documentElement,{childList:true,subtree:true});}})();
 
 
-/* SHA Z brand identity + animated page preloader */
+/* Single-instance brand logos and a reliable, accessible page loader */
 (()=> {
-  if (document.getElementById('shaz-brand-styles')) return;
-  const style=document.createElement('style');
-  style.id='shaz-brand-styles';
-  style.textContent=`
-    .header .logo,.drawer-top .logo,.footer-brand{display:flex!important;align-items:center;justify-content:flex-start;width:auto!important;height:auto!important;min-width:0!important;padding:0!important;border:0!important;background:none!important;border-radius:0!important;overflow:visible}
-    .header .logo img,.drawer-top .logo img{display:block;width:clamp(128px,13vw,190px);height:auto;max-height:42px;object-fit:contain}
-    .footer-brand img{display:block;width:clamp(155px,18vw,230px);height:auto;max-height:48px;object-fit:contain}
-    .shaz-preloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#050706;opacity:1;visibility:visible;transition:opacity .7s cubic-bezier(.2,.7,.2,1),visibility .7s;overflow:hidden}
-    .shaz-preloader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
-    .shaz-preloader:before,.shaz-preloader:after{content:"";position:absolute;width:min(68vw,620px);aspect-ratio:1;border:1px solid rgba(190,235,92,.13);border-radius:50%;animation:shaz-orbit 4s linear infinite}
-    .shaz-preloader:after{width:min(48vw,430px);border-color:rgba(190,235,92,.22);animation-direction:reverse;animation-duration:6s}
-    .shaz-loader-content{position:relative;z-index:1;width:min(76vw,390px);text-align:center}
-    .shaz-loader-logo{display:block;width:100%;height:auto;filter:drop-shadow(0 0 26px rgba(185,243,107,.12));animation:shaz-logo-in .85s cubic-bezier(.2,.8,.2,1) both}
-    .shaz-loader-track{height:2px;width:72%;margin:27px auto 0;background:rgba(255,255,255,.14);overflow:hidden}
-    .shaz-loader-track span{display:block;width:38%;height:100%;background:#c8f36a;box-shadow:0 0 14px #c8f36a;animation:shaz-progress 1.45s ease-in-out infinite}
-    .shaz-loader-caption{display:block;margin-top:13px;color:#a9bd8a;font:500 9px/1.5 Poppins,Arial,sans-serif;letter-spacing:.34em;text-transform:uppercase}
-    @keyframes shaz-progress{0%{transform:translateX(-110%)}100%{transform:translateX(290%)}}
-    @keyframes shaz-orbit{to{transform:rotate(360deg)}}
-    @keyframes shaz-logo-in{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-    @media(max-width:600px){.header .logo img,.drawer-top .logo img{width:132px;max-height:32px}.shaz-loader-content{width:min(82vw,330px)}}
-    @media(prefers-reduced-motion:reduce){.shaz-preloader:before,.shaz-preloader:after,.shaz-loader-logo,.shaz-loader-track span{animation:none!important}.shaz-preloader{transition:opacity .2s,visibility .2s}}
-  `;
-  document.head.appendChild(style);
-  const brandImg='<img src="/SHAZ_navbar_logo.svg" alt="Hussain — Software Engineer" width="2048" height="371">';
-  document.querySelectorAll('.header .logo,.drawer-top .logo,.footer-brand').forEach(a=>{a.innerHTML=brandImg;a.setAttribute('aria-label','Hussain — Software Engineer')});
-  const loader=document.createElement('div');
-  loader.className='shaz-preloader';loader.id='shaz-preloader';loader.setAttribute('role','status');loader.setAttribute('aria-label','Loading website');
-  loader.innerHTML='<div class="shaz-loader-content">'+brandImg+'<div class="shaz-loader-track"><span></span></div><span class="shaz-loader-caption">Loading experience</span></div>';
-  document.body.prepend(loader);
-  let dismissed=false;
-  const dismiss=()=>{if(dismissed)return;dismissed=true;loader.classList.add('is-leaving');setTimeout(()=>loader.remove(),800)};
-  if(document.readyState==='complete')setTimeout(dismiss,650);
-  else window.addEventListener('load',()=>setTimeout(dismiss,450),{once:true});
-  setTimeout(dismiss,5500);
+  if (window.__shazBrandInit) return;
+  window.__shazBrandInit = true;
+
+  const logoSrc = '/SHAZ_navbar_logo.svg';
+  const makeLogo = (className, alt) => {
+    const img = document.createElement('img');
+    img.src = logoSrc;
+    img.alt = alt;
+    img.className = className;
+    img.decoding = 'async';
+    img.loading = 'eager';
+    return img;
+  };
+
+  // Replace, rather than append, so a repeated script execution can never stack logos.
+  document.querySelectorAll('.header .logo,.drawer-top .logo,.footer-brand').forEach(link => {
+    link.replaceChildren(makeLogo('shaz-brand-img', 'Hussain — Software Engineer'));
+    link.setAttribute('aria-label', 'Hussain — Software Engineer');
+  });
+
+  if (!document.getElementById('shaz-brand-styles')) {
+    const style = document.createElement('style');
+    style.id = 'shaz-brand-styles';
+    style.textContent = `
+      .header .logo,.drawer-top .logo,.footer-brand{display:flex!important;align-items:center;justify-content:flex-start;width:auto!important;height:auto!important;min-width:0!important;padding:0!important;border:0!important;background:none!important;border-radius:0!important;overflow:visible}
+      .shaz-brand-img{display:block!important;width:clamp(125px,13vw,185px)!important;height:auto!important;max-height:38px!important;object-fit:contain!important}
+      .footer-brand .shaz-brand-img{width:clamp(150px,18vw,215px)!important;max-height:44px!important}
+      .drawer-top .shaz-brand-img{width:145px!important;max-height:34px!important}
+      .shaz-preloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#050706;opacity:1;visibility:visible;pointer-events:auto;transition:opacity .45s ease,visibility .45s ease;overflow:hidden}
+      .shaz-preloader.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+      .shaz-loader-orbit{position:absolute;width:min(68vw,500px);aspect-ratio:1;border:1px solid rgba(190,235,92,.16);border-radius:50%;animation:shaz-orbit 5s linear infinite}
+      .shaz-loader-orbit:after{content:"";position:absolute;inset:12%;border:1px solid rgba(190,235,92,.18);border-radius:50%}
+      .shaz-loader-content{position:relative;z-index:1;width:min(74vw,340px);text-align:center}
+      .shaz-loader-logo{display:block;width:100%;height:auto;filter:drop-shadow(0 0 20px rgba(185,243,107,.12));animation:shaz-logo-in .65s ease both}
+      .shaz-loader-track{height:3px;width:68%;margin:22px auto 0;background:rgba(255,255,255,.16);border-radius:9px;overflow:hidden}
+      .shaz-loader-track span{display:block;width:35%;height:100%;border-radius:9px;background:#c8f36a;animation:shaz-progress 1.15s ease-in-out infinite}
+      .shaz-loader-caption{display:block;margin-top:12px;color:#b7c99a;font:500 10px/1.5 Poppins,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+      @keyframes shaz-progress{0%{transform:translateX(-110%)}100%{transform:translateX(310%)}}
+      @keyframes shaz-orbit{to{transform:rotate(360deg)}}
+      @keyframes shaz-logo-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+      @media(max-width:600px){.header .shaz-brand-img{width:125px!important;max-height:30px!important}.shaz-loader-content{width:min(82vw,290px)}}
+      @media(prefers-reduced-motion:reduce){.shaz-loader-orbit,.shaz-loader-logo,.shaz-loader-track span{animation:none!important}.shaz-preloader{transition:opacity .15s,visibility .15s}}
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Never create a second overlay if the script is included more than once.
+  if (!document.getElementById('shaz-preloader') && document.body) {
+    const loader = document.createElement('div');
+    loader.className = 'shaz-preloader';
+    loader.id = 'shaz-preloader';
+    loader.setAttribute('role', 'status');
+    loader.setAttribute('aria-label', 'Loading website');
+    loader.innerHTML = '<div class="shaz-loader-orbit" aria-hidden="true"></div><div class="shaz-loader-content"><img class="shaz-loader-logo" src="' + logoSrc + '" alt="Hussain — Software Engineer" width="2048" height="371" decoding="async"><div class="shaz-loader-track" aria-hidden="true"><span></span></div><span class="shaz-loader-caption">Getting things ready</span></div>';
+    document.body.prepend(loader);
+
+    let dismissed = false;
+    let fallbackTimer;
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
+      clearTimeout(fallbackTimer);
+      loader.classList.add('is-leaving');
+      window.setTimeout(() => loader.remove(), 500);
+    };
+
+    // Wait only for the document structure, not every image or third-party asset.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => window.setTimeout(dismiss, 350), { once: true });
+    } else {
+      window.setTimeout(dismiss, 350);
+    }
+    window.addEventListener('load', () => window.setTimeout(dismiss, 200), { once: true });
+    window.addEventListener('pageshow', event => { if (event.persisted) dismiss(); }, { once: true });
+    fallbackTimer = window.setTimeout(dismiss, 2500);
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.setTimeout(dismiss, 150);
+    }
+  }
 })();
