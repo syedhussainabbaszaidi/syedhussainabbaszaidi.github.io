@@ -1187,3 +1187,45 @@ body.services-page .service-list-section .service-card:focus-visible{
 .resume-premium-hero .resume-links>a span{
   margin-left:10px;
 }
+
+
+/* Industry inner-page hero CTA alignment: keep the primary button and underlined secondary link on one shared row. */
+.service-detail-page .detail-service-hero .service-hero-actions{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  flex-wrap:wrap!important;
+  gap:22px!important;
+}
+.service-detail-page .detail-service-hero .service-hero-actions>a.btn-primary{
+  box-sizing:border-box;
+  display:inline-flex;
+  flex:0 1 auto;
+  width:auto;
+  min-width:220px;
+  max-width:100%;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+}
+.service-detail-page .detail-service-hero .service-hero-actions>a.text-link{
+  display:inline-flex;
+  flex:0 0 auto;
+  width:auto;
+  min-width:0;
+  min-height:0;
+  align-items:center;
+  justify-content:flex-start;
+  margin:0;
+  padding:0 0 8px!important;
+}
+@media(max-width:600px){
+  .service-detail-page .detail-service-hero .service-hero-actions{
+    gap:16px!important;
+  }
+  .service-detail-page .detail-service-hero .service-hero-actions>a.btn-primary{
+    min-width:min(220px,100%);
+  }
+}
