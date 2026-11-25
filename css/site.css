@@ -997,3 +997,79 @@ body.services-page .service-list-section .service-card:focus-visible{
   color:var(--lime);
   transform:translateY(-2px);
 }
+
+
+/* Consistent paired hero CTAs across service pages, project case studies and resume. */
+.hero-actions,
+.service-hero-actions,
+.contact-hero-actions,
+.ai-us-actions,
+.resume-links,
+.us-shopify-hero .service-hero-actions,
+.case-hero .resume-links,
+.resume-premium-hero .resume-links{
+  column-gap:22px!important;
+  row-gap:14px!important;
+}
+
+/* Primary CTA uses one shared base width; longer labels can grow naturally. */
+.hero-actions>a:first-child,
+.service-hero-actions>a:first-child,
+.contact-hero-actions>a:first-child,
+.ai-us-actions>a:first-child,
+.resume-links>a:first-child,
+.us-shopify-hero .service-hero-actions>a:first-child,
+.case-hero .resume-links>a:first-child,
+.resume-premium-hero .resume-links>a:first-child{
+  box-sizing:border-box;
+  flex:0 1 auto!important;
+  width:max-content;
+  min-width:220px;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+
+/* Keep the secondary action as a text link and separate it from the primary button. */
+.service-hero-actions>a.text-link,
+.service-hero-actions>a.us-hero-link,
+.us-shopify-hero .service-hero-actions>a.text-link,
+.us-shopify-hero .service-hero-actions>a.us-hero-link,
+.ai-us-actions>a.ai-us-text-link,
+.ai-us-actions>a.text-link,
+.hero-actions>a.text-link,
+.contact-hero-actions>a.text-link,
+.resume-links>a.text-link,
+.case-hero .resume-links>a:nth-child(2),
+.resume-premium-hero .resume-links>a:nth-child(2){
+  flex:0 0 auto!important;
+  width:auto;
+  min-width:0;
+  max-width:100%;
+}
+
+/* Keep the paired actions usable on narrow screens. */
+@media(max-width:600px){
+  .hero-actions>a:first-child,
+  .service-hero-actions>a:first-child,
+  .contact-hero-actions>a:first-child,
+  .ai-us-actions>a:first-child,
+  .resume-links>a:first-child,
+  .us-shopify-hero .service-hero-actions>a:first-child,
+  .case-hero .resume-links>a:first-child,
+  .resume-premium-hero .resume-links>a:first-child{
+    min-width:min(220px,100%);
+    width:max-content;
+    max-width:100%;
+  }
+  .hero-actions,
+  .service-hero-actions,
+  .contact-hero-actions,
+  .ai-us-actions,
+  .resume-links,
+  .us-shopify-hero .service-hero-actions,
+  .case-hero .resume-links,
+  .resume-premium-hero .resume-links{
+    gap:16px!important;
+  }
+}
